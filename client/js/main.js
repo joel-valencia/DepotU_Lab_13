@@ -21,7 +21,7 @@ angular.module('myApp', ['ngRoute'])
                 method: 'GET'
             }).then(function(result) {
                 $rootScope.tweets = result;
-                console.log($rootScope.tweets);
+                //console.log($rootScope.tweets);
                 $rootScope.$apply();
             });
         }
