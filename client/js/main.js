@@ -6,7 +6,20 @@ angular.module('myApp', ['ngRoute'])
         };
 	}])
 	.controller('tweetsController', ['$rootScope', function($rootScope){
+        $rootScope.getData = function() {
+            $.ajax({
+                url: 'http://localhost:3000/messages',
+                method: 'GET'
+            }).then(function(result) {
+                
+                
+                $rootScope.tweets = result;
+                
+                console.log($rootScope.tweets);
+            });
+        }
         
+        $rootScope.getData();
 	}])
 	.config(['$routeProvider', function($routeProvider){
         $routeProvider
