@@ -1,6 +1,9 @@
 <div class="container">
     <h3>Welcome {{ $root.username }}!</h3>
     
+    <textarea id="compose"></textarea>
+    <button id="send">Send</button>
+    
     <div ng-repeat="tweet in $root.tweets" class="post">
         <div class="post_username">{{ tweet.user }}</div>
         <div class="post_timestamp">{{ tweet.createdAt }}</div>
