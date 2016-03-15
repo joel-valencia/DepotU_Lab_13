@@ -14,6 +14,9 @@ angular.module('myApp', ['ngRoute'])
         .when('/tweets', {
             templateUrl: 'views/tweets.html',
             controller: 'tweetsController'
+        })
+        .otherwise({
+            redirectTo: '/'
         });
 
 }]);
