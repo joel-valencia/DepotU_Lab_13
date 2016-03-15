@@ -6,7 +6,7 @@
     
     <div ng-repeat="tweet in $root.tweets | orderBy: '-createdAt'" class="post">
         <div class="post_username">{{ tweet.user }}</div>
-        <div class="post_timestamp">{{ tweet.createdAt }}</div>
+        <div class="post_timestamp">{{ tweet.createdAt | date : 'short' }}</div>
         <div class="post_content">{{ tweet.text }}</div>
     </div>
 </div>
