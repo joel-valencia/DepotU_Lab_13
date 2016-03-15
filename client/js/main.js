@@ -22,6 +22,7 @@ angular.module('myApp', ['ngRoute'])
             }).then(function(result) {
                 $rootScope.tweets = result;
                 console.log($rootScope.tweets);
+                $rootScope.$apply();
             });
         }
         
@@ -29,8 +30,6 @@ angular.module('myApp', ['ngRoute'])
             var toAdd = {}
             toAdd.user = $rootScope.username;
             toAdd.text = $rootScope.compose;
-            //console.log(toAdd);
-            //console.log(JSON.stringify(toAdd));
             var stringified = JSON.stringify(toAdd);
             
             $.ajax({
@@ -40,7 +39,7 @@ angular.module('myApp', ['ngRoute'])
             }).then(function(result) {
                 $('#compose').val("");
                 $('#send').prop('disabled', true);
-                // $('#container').prepend('<div class="post"><div class="post_username">' + toAdd.userName + '</div><div class="post_content">' + toAdd.text + '</div></div>');
+                $rootScope.getData();
             });
         }
         
