@@ -1,10 +1,10 @@
 <div class="container">
     <h3>Welcome {{ $root.username }}!</h3>
     
-    <textarea id="compose"></textarea>
-    <button id="send">Send</button>
+    <textarea id="compose" ng-model="$root.compose"></textarea>
+    <button id="send" ng-click="postData()">Send</button>
     
-    <div ng-repeat="tweet in $root.tweets" class="post">
+    <div ng-repeat="tweet in $root.tweets | orderBy: '-createdAt'" class="post">
         <div class="post_username">{{ tweet.user }}</div>
         <div class="post_timestamp">{{ tweet.createdAt }}</div>
         <div class="post_content">{{ tweet.text }}</div>

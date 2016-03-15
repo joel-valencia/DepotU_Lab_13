@@ -25,6 +25,25 @@ angular.module('myApp', ['ngRoute'])
             });
         }
         
+        $rootScope.postData = function() {
+            var toAdd = {}
+            toAdd.user = $rootScope.username;
+            toAdd.text = $rootScope.compose;
+            //console.log(toAdd);
+            //console.log(JSON.stringify(toAdd));
+            var stringified = JSON.stringify(toAdd);
+            
+            $.ajax({
+                url: 'http://localhost:3000/messages',
+                method: 'POST',
+                data: stringified
+            }).then(function(result) {
+                $('#compose').val("");
+                $('#send').prop('disabled', true);
+                // $('#container').prepend('<div class="post"><div class="post_username">' + toAdd.userName + '</div><div class="post_content">' + toAdd.text + '</div></div>');
+            });
+        }
+        
         $rootScope.getData();
         
         $('#send').prop('disabled', true);
