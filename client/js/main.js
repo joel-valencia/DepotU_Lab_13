@@ -1,11 +1,11 @@
 angular.module('myApp', ['ngRoute'])
-    .controller('welcomeController', ['$scope', function($scope){
-        $scope.username = 'sss';
-        $scope.logIn = function() {
+    .controller('welcomeController', ['$rootScope', function($rootScope){
+        $rootScope.username = '';
+        $rootScope.logIn = function() {
             location.hash = "#/tweets";
         };
 	}])
-	.controller('tweetsController', ['$scope', function($scope){
+	.controller('tweetsController', ['$rootScope', function($rootScope){
         
 	}])
 	.config(['$routeProvider', function($routeProvider){
