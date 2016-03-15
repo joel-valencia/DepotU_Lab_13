@@ -1,8 +1,19 @@
-angular.module('myApp', [])
-	.controller('MyController', ['', function(){
+angular.module('myApp', ['ngRoute'])
+	.controller('tweetsController', ['$scope', function($scope){
 
 	}])
-	.config(['', function(){
+    .controller('welcomeController', ['$scope', function($scope){
 
+	}])
+	.config(['$routeProvider', function($routeProvider){
+        $routeProvider
+        .when('/', {
+            templateUrl: 'views/welcome.html',
+            controller: 'welcomeController'
+        })
+        .when('/tweets', {
+            templateUrl: 'views/tweets.html',
+            controller: 'tweetsController'
+        });
 
 }]);
