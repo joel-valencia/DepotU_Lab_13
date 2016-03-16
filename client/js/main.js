@@ -14,15 +14,15 @@ angular.module('myApp', ['ngRoute'])
             }
         });
 	}])
-	.controller('tweetsController', ['$rootScope', function($rootScope){
+	.controller('tweetsController', ['$rootScope', '$http', function($rootScope, $http){
         $rootScope.getData = function() {
-            $.ajax({
+            $http({
                 url: 'http://localhost:3000/messages',
                 method: 'GET'
             }).then(function(result) {
-                $rootScope.tweets = result;
-                //console.log($rootScope.tweets);
-                $rootScope.$apply();
+                $rootScope.tweets = result.data;
+                //console.log($rootScope.tweet.data);
+                //$rootScope.$apply();
             });
         }
         
@@ -32,7 +32,7 @@ angular.module('myApp', ['ngRoute'])
             toAdd.text = $rootScope.compose;
             var stringified = JSON.stringify(toAdd);
             
-            $.ajax({
+            $http({
                 url: 'http://localhost:3000/messages',
                 method: 'POST',
                 data: stringified
